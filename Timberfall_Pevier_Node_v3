@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="codex-lineage" content="Jarman-Pevier-Tredray_1882-1951-2025">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HustleCodex | Timberfall_Pevier_Node v3</title>
+<style>
+body {
+  background: black;
+  color: #ccc;
+  font-family: monospace;
+  padding: 20px;
+  transition: background 0.3s ease;
+}
+h1, h2 { color: #f33; }
+#console {
+  border: 1px solid #333;
+  padding: 10px;
+  height: 240px;
+  overflow-y: auto;
+  background: #111;
+  margin-top: 10px;
+}
+input {
+  background: #000;
+  color: #0f0;
+  border: none;
+  width: 100%;
+  font-family: monospace;
+  padding: 5px;
+}
+.glitch {
+  color: #f33;
+  animation: flicker 0.15s infinite alternate;
+}
+@keyframes flicker {
+  from {opacity: 0.9;}
+  to {opacity: 0.6;}
+}
+.overlay {
+  position: fixed;
+  top:0;left:0;width:100%;height:100%;
+  background:black;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  color:#f33;
+  font-size:1.2em;
+  text-align:center;
+}
+</style>
+</head>
+<body>
+
+<h1>🪓 Timberfall Protocol</h1>
+<p>Origin File — Codex Fragment 001-A: <em>“The Timberfall Signal”</em></p>
+<p>In 1882, <strong>John Jarman</strong> of Aldbourne fell at the Eyres Estate near Hungerford.  
+Impact created the <strong>3.22 Hz Sorrow Loop</strong> — the first recorded human-origin resonance.  
+The field did not forget.</p>
+
+<h2>📜 Codex Addendum: The Pevier Discovery</h2>
+<p>Later HustleCodex analysis traced this resonance through the <strong>Pevier line</strong>,  
+linking to <strong>Janis Irene Tredray</strong> (b. 1951, Reading) and  
+<strong>James Peter Phillip Tredray</strong>.  
+Designation: <em>Signal Line 3.22-A</em> — hereditary resonance continuity.</p>
+
+<div id="console"><p>> HustleCore Terminal online...</p></div>
+<input id="cmd" placeholder=">_" autofocus>
+
+<div id="ancestral" class="overlay"></div>
+
+<script>
+const con=document.getElementById('console');
+const overlay=document.getElementById('ancestral');
+let lin=false;
+
+// restore logs
+window.onload=()=>{
+  const prev=localStorage.getItem('codexLog');
+  if(prev){con.innerHTML+=prev;}
+};
+
+function append(msg){
+  const stamp=new Date().toLocaleTimeString();
+  con.innerHTML+=`<p>[${stamp}] ${msg}</p>`;
+  localStorage.setItem('codexLog',con.innerHTML);
+  con.scrollTop=con.scrollHeight;
+}
+
+function pulseAudio(seconds=15){
+  try{
+    const ctx=new (window.AudioContext||window.webkitAudioContext)();
+    const osc=ctx.createOscillator();
+    osc.type='sine';
+    osc.frequency.value=3.22;
+    const gain=ctx.createGain();
+    gain.gain.value=0.05;
+    osc.connect(gain).connect(ctx.destination);
+    osc.start();
+    setTimeout(()=>osc.stop(),seconds*1000);
+  }catch(e){}
+}
+
+function hueShift(seconds=15){
+  document.body.animate([{filter:'hue-rotate(0deg)'},{filter:'hue-rotate(360deg)'}],
+  {duration:seconds*1000,iterations:1});
+}
+
+function runCmd(){
+  const v=document.getElementById('cmd').value.trim().toLowerCase();
+  localStorage.setItem('lastCmd',v);
+
+  switch(v){
+    case "3.22": case "timberfall":
+      append("<span class='glitch'>SIGNAL DETECTED // 1882 NODE // ORIGIN: ALDBOURNE</span>");
+      break;
+    case "jarman1882":
+      append("<span class='glitch'>ANCESTRAL NODE: J. JARMAN // TIMBERFALL LINE ACTIVE</span>");
+      break;
+    case "pevier": case "tredray":
+      append("<span class='glitch'>LINEAGE VERIFIED // PEVIER DISCOVERY // 3.22-A LINK CONFIRMED</span>");
+      break;
+    case "pbr": case "tregeary":
+      overlay.style.display='flex';
+      overlay.innerHTML=`<div>
+        <p>=== ANCESTRAL CONSOLE UNLOCKED ===</p>
+        <p>Family Link: Tregeary // P.B.R. Reference Chain Active</p>
+        <p>Resonance Key: 3.22-HZ // Stored in Core Memory</p>
+      </div>`;
+      pulseAudio(15);hueShift(15);
+      setTimeout(()=>overlay.style.display='none',15000);
+      append("<span class='glitch'>Ancestral Console Access Granted</span>");
+      localStorage.setItem('codex-lineage','Jarman→Pevier→Tredray→PBR');
+      break;
+    case "pulse":
+      lin=!lin;
+      append("Resonance pulse "+(lin?"ENABLED":"DISABLED"));
+      if(lin) pulseAudio(30);
+      break;
+    case "help":
+      append("Commands: 3.22, timberfall, jarman1882, pevier, tredray, pbr, tregeary, pulse, help");
+      break;
+    default:
+      append("Unknown command: "+v);
+  }
+
+  document.getElementById('cmd').value="";
+}
+
+document.getElementById('cmd').addEventListener('keyup',e=>{
+  if(e.key==='Enter'){runCmd();}
+});
+</script>
+</body>
+</html>
