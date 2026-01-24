@@ -39,7 +39,7 @@ No installation required! This is a standalone HTML file.
 
 ### Usage
 
-1. Open the `Timberfall_Pevier_Node_v3` HTML file in any modern web browser
+1. Open the `Timberfall_Pevier_Node_v3` file (HTML document) in any modern web browser
 2. The terminal will initialize automatically
 3. Type commands in the input field and press Enter
 4. Explore the narrative through the various commands
@@ -77,7 +77,7 @@ Codex-hub/
 ## 🔊 Technical Details
 
 ### Audio Synthesis
-The project uses the Web Audio API to generate a real-time 3.22 Hz sine wave. This very low frequency is below the typical hearing range but can create a subtle resonance effect in some audio systems.
+The project uses the Web Audio API to generate a real-time 3.22 Hz sine wave. This very low frequency is below the audible range (human hearing typically starts around 20 Hz) but can create a subtle resonance effect in some audio systems.
 
 ```javascript
 const osc = ctx.createOscillator();
