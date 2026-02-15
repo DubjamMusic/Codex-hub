@@ -1,123 +1,274 @@
 # Codex-hub
 
-## 🪓 Timberfall Protocol - An Interactive Terminal Experience
+> Centralized component library and utilities hub for the HustleCodeX ecosystem
 
-Codex-hub is an experimental creative project that combines web technologies, audio synthesis, and fictional storytelling into an immersive interactive terminal experience. The project presents "The Timberfall Signal" - a narrative about resonance frequencies and family lineage wrapped in a retro terminal interface.
+## 📖 Overview
 
-## 📖 Project Overview
+Codex-hub is a TypeScript monorepo that provides shared UI components, design tokens, utilities, and animation presets for all HustleCodeX projects. Built with modern web technologies and designed for maximum reusability and type safety.
 
-This repository contains **HustleCodex**, an interactive HTML-based terminal interface that tells the story of:
-- The **Timberfall Signal**: A 3.22 Hz resonance originating from John Jarman's fall in 1882 at the Eyres Estate near Hungerford
-- The **Pevier Discovery**: A traced lineage connecting to Janis Irene Tredray (b. 1951, Reading) and James Peter Phillip Tredray
-- **Signal Line 3.22-A**: A hereditary resonance continuity designation
+## 🎯 Features
 
-## 🛠️ Technologies Used
+- 🎨 **Design System Tokens** - Centralized colors, typography, and spacing
+- 🧩 **React Components** - Reusable, accessible UI components
+- 🛠️ **Utilities** - Shared TypeScript utilities for validation and formatting
+- ✨ **Animation Presets** - Framer Motion variants for consistent animations
+- 📦 **Tree-Shakeable** - Import only what you need
+- 🔒 **Type-Safe** - Full TypeScript support with type definitions
+- 🚀 **Fast Builds** - Powered by tsup and Turbo
 
-- **HTML5** - Core structure and content
-- **Vanilla JavaScript** - Interactive functionality (no external dependencies)
-- **CSS3** - Terminal aesthetic with animations and visual effects
-- **Web Audio API** - Real-time audio synthesis generating 3.22 Hz sine wave
-- **LocalStorage** - Persistent command history and session data
+## 📦 Packages
 
-## ✨ Features
+### @hustlecodex/design-tokens
 
-- **Interactive Terminal Interface**: Retro-style command-line interface with monospace fonts and terminal colors
-- **Command System**: Hidden commands that unlock different narrative elements
-- **Audio Synthesis**: Real-time generation of 3.22 Hz resonance frequency using Web Audio API
-- **Visual Effects**: 
-  - Glitch animations on special text
-  - Hue rotation effects
-  - Overlay messages for ancestral console
-- **Persistent History**: LocalStorage saves command history and logs across sessions
-- **Timestamps**: All commands are logged with timestamps
+Design system tokens including colors, typography, spacing, and shadows.
 
-## 🚀 Getting Started
+```typescript
+import { colors, fonts, spacing } from '@hustlecodex/design-tokens';
+```
 
-### Installation
+### @hustlecodex/utils
 
-No installation required! This is a standalone HTML file.
+Shared utilities for validation, formatting, and TypeScript types.
 
-### Usage
+```typescript
+import { formatXP, validateEmail, type User } from '@hustlecodex/utils';
+```
 
-1. Open the `Timberfall_Pevier_Node_v3` file (HTML document) in any modern web browser
-2. The terminal will initialize automatically
-3. Type commands in the input field and press Enter
-4. Explore the narrative through the various commands
+### @hustlecodex/animations
 
-### Available Commands
+Framer Motion animation variants and presets.
 
-| Command | Description |
-|---------|-------------|
-| `3.22` | Display signal detection message from the 1882 node |
-| `timberfall` | Same as `3.22` - displays signal detection |
-| `jarman1882` | Shows ancestral node information for J. Jarman |
-| `pevier` | Verifies lineage and confirms Pevier discovery |
-| `tredray` | Same as `pevier` - confirms 3.22-A link |
-| `pbr` | Unlocks ancestral console with full audio/visual effects |
-| `tregeary` | Same as `pbr` - grants ancestral console access |
-| `pulse` | Toggle 3.22 Hz audio resonance on/off (30 second duration) |
-| `help` | Display list of available commands |
+```typescript
+import { fadeIn, glowPulse, slideIn } from '@hustlecodex/animations';
+```
 
-## 🎨 Creative Concept
+### @hustlecodex/ui
 
-The project is an artistic exploration of:
-- **Digital Archaeology**: Presenting fictional history as if uncovered through technology
-- **Resonance & Memory**: Using audio frequencies as a metaphor for inherited memory
-- **Interactive Storytelling**: Allowing users to discover narrative through exploration
-- **Retro Aesthetics**: Terminal-style interface invoking 80s/90s hacker culture
+React UI components following the HustleCodeX design system.
 
-## 📁 File Structure
+```typescript
+import { Button, Card, XPBar, QuestCard } from '@hustlecodex/ui';
+```
+
+## 🚀 Installation
+
+Install the packages you need:
+
+```bash
+# Using pnpm (recommended)
+pnpm add @hustlecodex/ui @hustlecodex/design-tokens
+
+# Using npm
+npm install @hustlecodex/ui @hustlecodex/design-tokens
+
+# Using yarn
+yarn add @hustlecodex/ui @hustlecodex/design-tokens
+```
+
+## 💻 Usage
+
+### Design Tokens
+
+```typescript
+import { colors, spacing, fonts } from '@hustlecodex/design-tokens';
+
+const styles = {
+  backgroundColor: colors.background.dark,
+  color: colors.primary.cyan,
+  padding: spacing.md,
+  fontFamily: fonts.body,
+};
+```
+
+### UI Components
+
+```tsx
+import { Button, Card, XPBar, Badge } from '@hustlecodex/ui';
+
+function MyComponent() {
+  return (
+    <Card variant="glass">
+      <h2>Welcome to HustleCodeX</h2>
+      <XPBar currentXP={2500} requiredXP={5000} level={5} />
+      <Badge variant="success">Active</Badge>
+      <Button variant="primary" onClick={handleClick}>
+        Start Quest
+      </Button>
+    </Card>
+  );
+}
+```
+
+### Utilities
+
+```typescript
+import { formatXP, validateEmail, formatDate } from '@hustlecodex/utils';
+
+const xpDisplay = formatXP(15000); // "15K"
+const isValid = validateEmail('user@example.com'); // true
+const dateStr = formatDate(new Date()); // "Jan 15, 2024"
+```
+
+### Animations
+
+```tsx
+import { motion } from 'framer-motion';
+import { fadeIn, glowPulse } from '@hustlecodex/animations';
+
+function AnimatedComponent() {
+  return (
+    <motion.div {...fadeIn}>
+      <motion.button {...glowPulse}>
+        Click me!
+      </motion.button>
+    </motion.div>
+  );
+}
+```
+
+## 🏗️ Development
+
+### Prerequisites
+
+- Node.js >= 18.0.0
+- pnpm >= 8.0.0
+
+### Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/DubjamMusic/Codex-hub.git
+cd Codex-hub
+
+# Install dependencies
+pnpm install
+
+# Build all packages
+pnpm build
+
+# Start development mode
+pnpm dev
+```
+
+### Project Structure
 
 ```
 Codex-hub/
-├── README.md                       # This documentation
-└── Timberfall_Pevier_Node_v3       # Main HTML application (standalone)
+├── packages/
+│   ├── ui/                    # React components
+│   ├── design-tokens/         # Design system tokens
+│   ├── utils/                 # Shared utilities
+│   └── animations/            # Framer Motion presets
+├── package.json              # Root workspace config
+├── pnpm-workspace.yaml       # Workspace definition
+├── tsconfig.json             # Base TypeScript config
+└── turbo.json                # Turbo configuration
 ```
 
-## 🔊 Technical Details
+## 🎨 Component Library
 
-### Audio Synthesis
-The project uses the Web Audio API to generate a real-time 3.22 Hz sine wave. This very low frequency is below the audible range (human hearing typically starts around 20 Hz) but can create a subtle resonance effect in some audio systems.
+### Core Components
 
-```javascript
-const osc = ctx.createOscillator();
-osc.type = 'sine';
-osc.frequency.value = 3.22;
+- **Button** - Primary, secondary, ghost variants with loading states
+- **Card** - Glass morphism card with header/content sections
+- **Input** - Form input with validation states and labels
+- **Badge** - Status indicators with color variants
+- **Progress** - Progress bars with gradient support
+- **Avatar** - User avatars with fallback support
+
+### Layout Components
+
+- **Container** - Responsive wrapper with max-width presets
+- **Stack** - Vertical/horizontal spacing utility
+- **Grid** - Responsive grid system
+
+### Specialized Components
+
+- **XPBar** - Gamification progress bar with level display
+- **QuestCard** - Quest display with status and rewards
+- **StatCard** - Metric display with trend indicators
+- **GlassPanel** - Glassmorphism container
+- **GradientText** - Animated gradient text
+- **GlowEffect** - Glow animations wrapper
+
+## 🎯 Design Principles
+
+- **Accessibility First** - All components support keyboard navigation and screen readers
+- **Dark Mode by Default** - Designed for dark theme with glassmorphism effects
+- **Gamification Ready** - Built-in components for XP, quests, and achievements
+- **Type Safety** - Full TypeScript support throughout
+- **Performance** - Tree-shakeable exports and optimized builds
+- **SSR Compatible** - Works with Next.js and other SSR frameworks
+
+## 📚 API Documentation
+
+### Button
+
+```tsx
+<Button
+  variant="primary" | "secondary" | "ghost"
+  size="sm" | "md" | "lg"
+  isLoading={boolean}
+  onClick={() => {}}
+>
+  Click me
+</Button>
 ```
 
-### Visual Effects
-- **Glitch Animation**: CSS keyframe animation that flickers special text
-- **Hue Shift**: JavaScript Web Animations API rotates colors across the spectrum
-- **Overlay System**: Full-screen overlay appears for special ancestral console access
+### Card
 
-### Data Persistence
-Commands and logs are stored in browser LocalStorage:
-- `codexLog`: Stores all console output
-- `lastCmd`: Stores the last command entered
-- `codex-lineage`: Stores family lineage chain when ancestral console is unlocked
+```tsx
+<Card variant="default" | "glass">
+  <CardHeader>
+    <CardTitle>Title</CardTitle>
+  </CardHeader>
+  <CardContent>Content</CardContent>
+</Card>
+```
 
-## 🌐 Browser Compatibility
+### XPBar
 
-Works in all modern browsers that support:
-- ES6 JavaScript
-- Web Audio API
-- LocalStorage
-- CSS3 Animations
+```tsx
+<XPBar
+  currentXP={2500}
+  requiredXP={5000}
+  level={5}
+  showLabel={true}
+/>
+```
 
-Tested in: Chrome, Firefox, Safari, Edge
+### QuestCard
+
+```tsx
+<QuestCard
+  title="Complete Tutorial"
+  description="Learn the basics"
+  xpReward={100}
+  status="active" | "locked" | "completed"
+  difficulty="easy" | "medium" | "hard"
+  onClick={() => {}}
+/>
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Make your changes
+4. Run tests and type checking (`pnpm type-check`)
+5. Commit your changes (`git commit -m 'Add amazing feature'`)
+6. Push to the branch (`git push origin feature/amazing-feature`)
+7. Open a Pull Request
 
 ## 📝 License
 
-This project is part of the DubjamMusic creative portfolio.
+MIT License - see LICENSE file for details
 
-## 🎯 Future Possibilities
+## 🔗 Links
 
-- Additional narrative branches and commands
-- More complex audio synthesis patterns
-- Multiplayer/shared resonance experiences
-- Mobile-optimized interface
-- Export/share functionality for discovered lineages
+- [GitHub Repository](https://github.com/DubjamMusic/Codex-hub)
+- [Issue Tracker](https://github.com/DubjamMusic/Codex-hub/issues)
 
 ---
 
-*"The field did not forget."* - Codex Fragment 001-A
+Built with ❤️ by the HustleCodeX team

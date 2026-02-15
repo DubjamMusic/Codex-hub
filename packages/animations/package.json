@@ -1,0 +1,33 @@
+{
+  "name": "@hustlecodex/animations",
+  "version": "0.1.0",
+  "description": "Framer Motion animation presets for the HustleCodeX ecosystem",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "type-check": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "peerDependencies": {
+    "framer-motion": "^11.0.0"
+  },
+  "keywords": [
+    "animations",
+    "framer-motion",
+    "hustlecodex"
+  ],
+  "license": "MIT"
+}
