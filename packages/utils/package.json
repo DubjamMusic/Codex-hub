@@ -1,0 +1,30 @@
+{
+  "name": "@hustlecodex/utils",
+  "version": "0.1.0",
+  "description": "Shared utilities for the HustleCodeX ecosystem",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "type-check": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "utilities",
+    "utils",
+    "hustlecodex"
+  ],
+  "license": "MIT"
+}
