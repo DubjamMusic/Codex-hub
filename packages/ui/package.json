@@ -7,14 +7,14 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "require": "./dist/index.js",
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
+      "import": "./dist/index.mjs"
     },
     "./components/*": {
+      "types": "./dist/components/*.d.ts",
       "require": "./dist/components/*.js",
-      "import": "./dist/components/*.mjs",
-      "types": "./dist/components/*.d.ts"
+      "import": "./dist/components/*.mjs"
     }
   },
   "files": [

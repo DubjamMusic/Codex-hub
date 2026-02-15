@@ -4,9 +4,10 @@ export interface CardProps {
   variant?: 'default' | 'glass';
   children: React.ReactNode;
   className?: string;
+  onClick?: () => void;
 }
 
-export const Card: React.FC<CardProps> = ({ variant = 'default', children, className = '' }) => {
+export const Card: React.FC<CardProps> = ({ variant = 'default', children, className = '', onClick }) => {
   const baseStyles = 'rounded-xl p-6';
   
   const variants = {
@@ -16,7 +17,7 @@ export const Card: React.FC<CardProps> = ({ variant = 'default', children, class
   
   const classes = `${baseStyles} ${variants[variant]} ${className}`;
   
-  return <div className={classes}>{children}</div>;
+  return <div className={classes} onClick={onClick}>{children}</div>;
 };
 
 export interface CardHeaderProps {
