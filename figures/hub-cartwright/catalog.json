@@ -1,0 +1,33 @@
+{
+  "waveId": "2026-09-19-d-lattice",
+  "figureId": "hub-cartwright",
+  "repo": "DubjamMusic/Codex-hub",
+  "mergePolicy": "pr-only",
+  "packages": [
+    {
+      "id": "animations",
+      "path": "packages/animations",
+      "exports": ["variants"],
+      "consumers": ["ui"]
+    },
+    {
+      "id": "design-tokens",
+      "path": "packages/design-tokens",
+      "exports": ["colors", "spacing", "typography"],
+      "consumers": ["ui"]
+    },
+    {
+      "id": "ui",
+      "path": "packages/ui",
+      "exports": ["QuestCard", "StatCard", "XPBar", "GlassPanel"],
+      "consumers": ["hustlecodex-platform", "template-hustlecodex-starter"]
+    },
+    {
+      "id": "utils",
+      "path": "packages/utils",
+      "exports": ["formatters", "validation", "types"],
+      "consumers": ["ui", "prestige_console"]
+    }
+  ],
+  "bannedFigureTokens": ["planner", "executor", "monitor", "data_agent"]
+}
