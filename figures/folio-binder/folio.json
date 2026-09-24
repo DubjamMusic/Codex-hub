@@ -1,0 +1,18 @@
+{
+  "figureId": "folio-binder",
+  "codename": "FOLIO-BINDER-24",
+  "waveId": "2026-09-24-i-loom",
+  "repo": "DubjamMusic/Codex-hub",
+  "role": "Bind the Codex-hub package folio as a scored catalog card.",
+  "knowledge": [
+    "packages/ is the catalog source, not this wave's rewrite surface",
+    "Folio is a list plus density, not a turbo pipeline",
+    "Workspace graph changes stay on a separate issue"
+  ],
+  "sample": {"N": 7.5, "V": 9.0, "S": 7.0, "D": 8.0},
+  "weights": {"N": 0.30, "V": 0.20, "S": 0.20, "D": 0.30},
+  "expectedDensity": 7.822,
+  "bannedTokens": ["planner", "executor", "monitor", "data_agent"],
+  "predecessorNotThisWave": "hub-cartwright",
+  "mergePolicy": "pr-only"
+}
