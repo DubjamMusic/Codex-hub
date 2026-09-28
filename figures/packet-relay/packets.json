@@ -1,0 +1,38 @@
+{
+  "figureId": "packet-relay",
+  "codename": "PACKET-RELAY-28",
+  "waveId": "2026-09-28-m-relay",
+  "repo": "DubjamMusic/Codex-hub",
+  "role": "Relay the four workspace packages with a testable outcome each.",
+  "packets": [
+    {
+      "id": "ui-shell",
+      "path": "packages/ui",
+      "outcome": "Shared UI primitives stay importable without copying boardroom enums.",
+      "test": "test -d packages/ui"
+    },
+    {
+      "id": "token-box",
+      "path": "packages/design-tokens",
+      "outcome": "Design tokens remain the color/type source for landing and console skins.",
+      "test": "test -d packages/design-tokens"
+    },
+    {
+      "id": "motion-pack",
+      "path": "packages/animations",
+      "outcome": "Animation helpers stay isolated from prestige scoring math.",
+      "test": "test -d packages/animations"
+    },
+    {
+      "id": "util-kit",
+      "path": "packages/utils",
+      "outcome": "Shared utils stay secret-free and have no drift reports with values.",
+      "test": "test -d packages/utils"
+    }
+  ],
+  "offRosterThisWave": ["folio-binder", "hub-cartwright", "storm-scout", "dial-wright", "cirrus-steward"],
+  "bannedTokens": ["planner", "executor", "monitor", "data_agent"],
+  "frozen": ["affirmAgent.ts", "challengeAgent.ts"],
+  "mergePolicy": "pr-only",
+  "lever": "V"
+}
