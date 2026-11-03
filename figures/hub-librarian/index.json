@@ -1,0 +1,12 @@
+{
+  "figure": "hub-librarian",
+  "wave": "2026-11-03-q-ember",
+  "packages": [
+    {"name": "@codex/animations", "path": "packages/animations"},
+    {"name": "@codex/design-tokens", "path": "packages/design-tokens"},
+    {"name": "@codex/ui", "path": "packages/ui"},
+    {"name": "@codex/utils", "path": "packages/utils"}
+  ],
+  "expectedCount": 4,
+  "prOnly": true
+}
